@@ -104,7 +104,7 @@ const calculateKembalian = () => {
 };
 const input_ps_uang = (zero) => {
   if (zero!==undefined) {
-    if (zero == 1000) {
+    if (zero == 1000 || zero == 10 || zero == 100) {
       document.getElementById("ps-uang").value =
         document.getElementById("ps-uang").value * zero;
     } else if (zero == -2) {
