@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
-</head>
-<body>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- JS -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script src="index.js"></script>
+    <script src="display.js"></script>
+    <script type="module"></script>
+  </head>
+  <body>
     <p>Prek steak</p>
-</body>
+    <table id="ps-menu-table"></table>
+      <input type="text" id="ps-menu-label" placeholder="Label" />
+      <input type="text" id="ps-menu-harga" placeholder="Harga" />
+      <button type="submit" onclick="add_ps_menu()">Add</button>
+  </body>
 </html>
