@@ -18,7 +18,7 @@ const generateTableHead = (table, data) => {
   }
 };
 
-const generateTable = (table, data) => {
+const generateTable = (table, data, isMin) => {
   for (let element of data) {
     let row = table.insertRow();
     let cell = row.insertCell();
@@ -34,16 +34,39 @@ const generateTable = (table, data) => {
     let btn = document.createElement("button");
     btn.setAttribute("class", "btn btn-sm btn-primary");
     btn.setAttribute("type", "button");
-    btn.setAttribute(
-      "onclick",
-      "add_ps_order_menu('" + element.label + "'," + element.harga + ")"
-    );
-    btn.setAttribute("data-toggle", "modal");
-    btn.setAttribute("data-target", "#ps-order-menu-modal");
-    btn.setAttribute("data-ps-menu-id", element.id);
-    btn.appendChild(document.createTextNode("+"));
+    if (isMin) {
+      btn.setAttribute(
+        "onclick",
+        "delete_ps_order_menu('" + element.label + "'," + element.harga + ")"
+      );
+      btn.setAttribute("data-toggle", "modal");
+      btn.setAttribute("data-target", "#ps-order-menu-modal");
+      btn.setAttribute("data-ps-menu-id", element.id);
+      btn.appendChild(document.createTextNode("-"));
+    } else {
+      btn.setAttribute(
+        "onclick",
+        "add_ps_order_menu('" + element.label + "'," + element.harga + ")"
+      );
+      btn.setAttribute("data-toggle", "modal");
+      btn.setAttribute("data-target", "#ps-order-menu-modal");
+      btn.setAttribute("data-ps-menu-id", element.id);
+      btn.appendChild(document.createTextNode("+"));
+    }
     cell.appendChild(btn);
   }
+};
+
+const delete_ps_order_menu = (label, harga) => {
+  for (let i = 0; i < local_ps_order_menu.length; i++) {
+    if (local_ps_order_menu[i].label == label) {
+      local_ps_order_menu.splice(i, 1);
+      break;
+    }
+  }
+  displayPsOrderMenu();
+  calculateTotal();
+  calculateKembalian();
 };
 
 let local_ps_order_menu = [];
@@ -60,9 +83,11 @@ const add_ps_order_menu = (label, harga) => {
 const displayPsOrderMenu = () => {
   let table = document.getElementById("ps-order-menu-table");
   table.innerHTML = "";
-  let data = Object.keys(local_ps_order_menu[0]);
-  generateTableHead(table, data);
-  generateTable(table, local_ps_order_menu);
+  if (local_ps_order_menu.length > 0) {
+    let data = Object.keys(local_ps_order_menu[0]);
+    generateTableHead(table, data);
+  }
+  generateTable(table, local_ps_order_menu, true);
 };
 const calculateTotal = () => {
   let total = 0;
@@ -78,13 +103,17 @@ const calculateKembalian = () => {
   document.getElementById("ps-kembalian").innerHTML = kembalian;
 };
 const input_ps_uang = (zero) => {
-  if (zero) {
+  if (zero!==undefined) {
     if (zero == 1000) {
       document.getElementById("ps-uang").value =
-      document.getElementById("ps-uang").value * zero;
+        document.getElementById("ps-uang").value * zero;
+    } else if (zero == -2) {
+      document.getElementById("ps-uang").value = "";
+    } else if (zero == -1) {
+      let uangg = document.getElementById("ps-uang").value;
+      document.getElementById("ps-uang").value = uangg.slice(0, -1);
     } else {
-      let uangg = document.getElementById("ps-uang").value+""+zero;
-      // uangg to number
+      let uangg = document.getElementById("ps-uang").value + "" + zero;
       document.getElementById("ps-uang").value = uangg;
     }
   }
