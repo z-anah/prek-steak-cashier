@@ -3,7 +3,20 @@ th,
 td {
   border: 1px solid black;
 }
-
+table{
+  width: 300px;
+  
+}
 .text-right {
   text-align: right;
+}
+.column {
+  float: left;
+  width: 33%;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

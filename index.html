@@ -15,9 +15,53 @@
   </head>
   <body>
     <p>Prek steak</p>
-    <table id="ps-menu-table"></table>
-      <input type="text" id="ps-menu-label" placeholder="Label" />
-      <input type="text" id="ps-menu-harga" placeholder="Harga" />
-      <button type="submit" onclick="add_ps_menu()">Add</button>
+    <div class="row">
+      <div class="column">
+        <table id="ps-menu-table"></table>
+        <br />
+
+        <!-- add new menu -->
+        <!-- <input type="text" id="ps-menu-label" placeholder="Label" />
+    <input type="text" id="ps-menu-harga" placeholder="Harga" />
+    <button type="submit" onclick="add_ps_menu()">Add</button> -->
+      </div>
+      <div class="column">
+        <table id="ps-order-menu-table"></table>
+        <br />
+      </div>
+      <div class="column">
+        <table>
+          <tr>
+            <th>Total</th>
+            <td id="ps-total"></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <th>Uang</th>
+            <td><input type="text" id="ps-uang" oninput="input_ps_uang()" /></td>
+          </tr>
+        </table>
+        <!-- button 1 to 9 -->
+        <button type="submit" onclick="input_ps_uang(1)">1</button>
+        <button type="submit" onclick="input_ps_uang(2)">2</button>
+        <button type="submit" onclick="input_ps_uang(3)">3</button>
+        <button type="submit" onclick="input_ps_uang(4)">4</button>
+        <button type="submit" onclick="input_ps_uang(5)">5</button>
+        <button type="submit" onclick="input_ps_uang(6)">6</button>
+        <button type="submit" onclick="input_ps_uang(7)">7</button>
+        <button type="submit" onclick="input_ps_uang(8)">8</button>
+        <button type="submit" onclick="input_ps_uang(9)">9</button>
+        <button type="submit" onclick="input_ps_uang(1000)">000</button>
+        <table>
+          <tr>
+            <th>Kembalian</th>
+            <td id="ps-kembalian"></td>
+          </tr>
+        </table>
+        <!-- button reset -->
+        <button type="submit" onclick="ulangi_ps_order_menu()">Ulangi</button>
+      </div>
+    </div>
   </body>
 </html>
