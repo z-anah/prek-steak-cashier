@@ -3,9 +3,13 @@ th,
 td {
   border: 1px solid black;
 }
-table{
-  width: 300px;
-  
+.column-menu{
+  float: left;
+  width: 40%;
+}
+.column-calculation{
+  float: left;
+  width: 20%;
 }
 .text-right {
   text-align: right;
@@ -23,11 +27,17 @@ button {
   background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 12px;
   margin: 2px 1px;
   cursor: pointer;
+  font-size: 30px;
+}
+.text-xl {
+  font-size: 30px;
+}
+.text-l {
+  font-size: 20px;
 }
